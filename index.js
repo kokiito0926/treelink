@@ -18,11 +18,13 @@ const baseDir = args.base;
 
 let inputData = "";
 try {
-	if (inputPath) {
-		inputData = await fs.readFile(inputPath, "utf8");
-	} else {
-		inputData = await stdin();
-	}
+	inputData = await fs.readFile(inputPath, "utf8");
+
+	// if (inputPath) {
+	// 	inputData = await fs.readFile(inputPath, "utf8");
+	// } else {
+	// 	inputData = await stdin();
+	// }
 
 	if (!inputData) {
 		console.error(chalk.red("Error: No input data provided."));
