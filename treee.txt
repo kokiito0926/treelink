@@ -1,0 +1,9 @@
+example
+├── subdir
+│   ├── main.txt
+│   └── subsubdir
+│       ├── example.txt
+│       └── main.txt
+└── subdir-two
+    ├── example.txt
+    └── main.txt
