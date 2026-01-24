@@ -12,7 +12,7 @@
 // >> $ cat ./tree.txt | ./index.js
 // >> $ cat ./treee.txt | ./index.js
 
-import { fs, chalk, stdin, minimist } from "zx";
+import { fs, stdin, minimist } from "zx";
 
 const args = minimist(process.argv.slice(2));
 const inputPath = args._[0] || args.input;
@@ -30,7 +30,7 @@ try {
 	}
 
 	if (!inputData) {
-		console.error(chalk.red("Error: No input data provided."));
+		console.error("Error: No input data provided.");
 		process.exit(1);
 	}
 
@@ -118,7 +118,7 @@ try {
 
 	if (outputPath) {
 		await fs.writeFile(outputPath, finalHtml);
-		console.error(chalk.green(`Success: ${outputPath}`));
+		console.error(`Success: ${outputPath}`);
 	} else {
 		process.stdout.write(finalHtml);
 	}
@@ -126,6 +126,6 @@ try {
 	// await fs.writeFile(outputPath, finalHtml);
 	// console.log(chalk.green(`Success: ${outputPath}`));
 } catch (err) {
-	console.error(chalk.red(`Error: ${err.message}`));
+	console.error(`Error: ${err.message}`);
 	process.exit(1);
 }
