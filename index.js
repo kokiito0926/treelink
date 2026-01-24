@@ -9,22 +9,25 @@
 // >> $ node ./index.js --input ./treee.txt --output ./output.html
 // >> $ node ./index.js --input ./treee.txt --output ./output.html --base "."
 
+// >> $ cat ./tree.txt | ./index.js
+// >> $ cat ./treee.txt | ./index.js
+
 import { fs, chalk, stdin, minimist } from "zx";
 
 const args = minimist(process.argv.slice(2));
 const inputPath = args.input;
-const outputPath = args.output || "output.html";
+const outputPath = args.output;
 const baseDir = args.base;
 
 let inputData = "";
 try {
-	inputData = await fs.readFile(inputPath, "utf8");
+	// inputData = await fs.readFile(inputPath, "utf8");
 
-	// if (inputPath) {
-	// 	inputData = await fs.readFile(inputPath, "utf8");
-	// } else {
-	// 	inputData = await stdin();
-	// }
+	if (inputPath) {
+		inputData = await fs.readFile(inputPath, "utf8");
+	} else if (!process.stdin.isTTY) {
+		inputData = await stdin();
+	}
 
 	if (!inputData) {
 		console.error(chalk.red("Error: No input data provided."));
@@ -113,8 +116,15 @@ try {
 </body>
 </html>`;
 
-	await fs.writeFile(outputPath, finalHtml);
-	console.log(chalk.green(`Success: ${outputPath}`));
+	if (outputPath) {
+		await fs.writeFile(outputPath, finalHtml);
+		console.error(chalk.green(`Success: ${outputPath}`));
+	} else {
+		process.stdout.write(finalHtml);
+	}
+
+	// await fs.writeFile(outputPath, finalHtml);
+	// console.log(chalk.green(`Success: ${outputPath}`));
 } catch (err) {
 	console.error(chalk.red(`Error: ${err.message}`));
 	process.exit(1);
