@@ -15,7 +15,7 @@
 import { fs, chalk, stdin, minimist } from "zx";
 
 const args = minimist(process.argv.slice(2));
-const inputPath = args.input;
+const inputPath = args._[0] || args.input;
 const outputPath = args.output;
 const baseDir = args.base;
 
