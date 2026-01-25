@@ -104,6 +104,7 @@ try {
 <html>
 <head>
   <meta charset="utf-8">
+  <title>treelink</title>
   <style>
     body { font-family: monospace; }
     .tree-line { display: inline-block; min-width: 100%; white-space: nowrap; }
