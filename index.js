@@ -121,7 +121,8 @@ try {
 		await fs.writeFile(outputPath, finalHtml);
 		console.error(`Success: ${outputPath}`);
 	} else {
-		process.stdout.write(finalHtml);
+		console.log(finalHtml);
+		// process.stdout.write(finalHtml);
 	}
 
 	// await fs.writeFile(outputPath, finalHtml);
