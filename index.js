@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+// >> $ tree . -L 2 | ./index.js
+// >> $ tree . -L 2 | ./index.js --base "."
+// >> $ tree . -L 2 | ./index.js --base "./base"
+
 // >> $ tree ./example/ > ./tree.txt
 // >> $ npx treee ./example/ > ./treee.txt
 

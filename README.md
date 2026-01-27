@@ -12,6 +12,12 @@ $ npm install --global @kokiito0926/treelink
 ## 実行方法
 
 ```bash
+$ tree . -L 2 | treelink
+$ tree . -L 2 | treelink --base "."
+$ tree . -L 2 | treelink --base "./base"
+```
+
+```bash
 $ tree ./example/ > ./tree.txt
 $ npx treee ./example/ > ./treee.txt
 ```
