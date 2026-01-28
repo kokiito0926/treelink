@@ -14,7 +14,7 @@ $ npm install --global @kokiito0926/treelink
 ```bash
 $ tree . -L 2 | treelink
 $ tree . -L 2 | treelink --base "."
-$ tree . -L 2 | treelink --base "./base"
+$ tree . -L 2 | treelink --base "./src"
 ```
 
 ```bash
