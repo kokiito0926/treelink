@@ -2,40 +2,22 @@
 
 // >> $ tree . -L 2 | ./index.js
 // >> $ tree . -L 2 | ./index.js --base "."
-// >> $ tree . -L 2 | ./index.js --base "./base"
+// >> $ tree . -L 2 | ./index.js --base "./src"
 
-// >> $ tree ./example/ > ./tree.txt
-// >> $ npx treee ./example/ > ./treee.txt
+// >> $ npx treee ./example/ | ./index.js
+// >> $ npx treee ./example/ | ./index.js --base "."
+// >> $ npx treee ./example/ | ./index.js --base "./src"
 
-// >> $ node ./index.js --input ./tree.txt --output ./output.html
-// >> $ node ./index.js --input ./tree.txt --output ./output.html --base "."
-
-// >> $ node ./index.js --input ./treee.txt --output ./output.html
-// >> $ node ./index.js --input ./treee.txt --output ./output.html --base "."
-
-// >> $ cat ./tree.txt | ./index.js
-// >> $ cat ./treee.txt | ./index.js
-
-import { fs, stdin, minimist } from "zx";
+import { stdin, minimist } from "zx";
 
 const args = minimist(process.argv.slice(2));
-// const inputPath = args._[0] || args.input;
-// const outputPath = args.output;
 const baseDir = args.base;
 
 let inputData = "";
 try {
-	// inputData = await fs.readFile(inputPath, "utf8");
-
 	if (!process.stdin.isTTY) {
 		inputData = await stdin();
 	}
-
-	// if (inputPath) {
-	// 	inputData = await fs.readFile(inputPath, "utf8");
-	// } else if (!process.stdin.isTTY) {
-	// 	inputData = await stdin();
-	// }
 
 	if (!inputData) {
 		console.error("Error: No input data provided.");
@@ -126,19 +108,6 @@ try {
 </html>`;
 
 	console.log(finalHtml);
-
-	/*
-	if (outputPath) {
-		await fs.writeFile(outputPath, finalHtml);
-		console.error(`Success: ${outputPath}`);
-	} else {
-		console.log(finalHtml);
-		// process.stdout.write(finalHtml);
-	}
-	*/
-
-	// await fs.writeFile(outputPath, finalHtml);
-	// console.log(chalk.green(`Success: ${outputPath}`));
 } catch (err) {
 	console.error(`Error: ${err.message}`);
 	process.exit(1);
