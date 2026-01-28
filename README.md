@@ -17,21 +17,6 @@ $ tree . -L 2 | treelink --base "."
 $ tree . -L 2 | treelink --base "./src"
 ```
 
-```bash
-$ tree ./example/ > ./tree.txt
-$ npx treee ./example/ > ./treee.txt
-```
-
-```bash
-$ treelink --input ./tree.txt --output ./output.html
-$ treelink --input ./treee.txt --output ./output.html
-```
-
-```bash
-$ treelink --input ./tree.txt --output ./output.html --base "."
-$ treelink --input ./treee.txt --output ./output.html --base "."
-```
-
 ## ライセンス
 
 [MIT](LICENSE)

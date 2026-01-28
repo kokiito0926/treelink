@@ -19,19 +19,23 @@
 import { fs, stdin, minimist } from "zx";
 
 const args = minimist(process.argv.slice(2));
-const inputPath = args._[0] || args.input;
-const outputPath = args.output;
+// const inputPath = args._[0] || args.input;
+// const outputPath = args.output;
 const baseDir = args.base;
 
 let inputData = "";
 try {
 	// inputData = await fs.readFile(inputPath, "utf8");
 
-	if (inputPath) {
-		inputData = await fs.readFile(inputPath, "utf8");
-	} else if (!process.stdin.isTTY) {
+	if (!process.stdin.isTTY) {
 		inputData = await stdin();
 	}
+
+	// if (inputPath) {
+	// 	inputData = await fs.readFile(inputPath, "utf8");
+	// } else if (!process.stdin.isTTY) {
+	// 	inputData = await stdin();
+	// }
 
 	if (!inputData) {
 		console.error("Error: No input data provided.");
@@ -121,6 +125,9 @@ try {
 </body>
 </html>`;
 
+	console.log(finalHtml);
+
+	/*
 	if (outputPath) {
 		await fs.writeFile(outputPath, finalHtml);
 		console.error(`Success: ${outputPath}`);
@@ -128,6 +135,7 @@ try {
 		console.log(finalHtml);
 		// process.stdout.write(finalHtml);
 	}
+	*/
 
 	// await fs.writeFile(outputPath, finalHtml);
 	// console.log(chalk.green(`Success: ${outputPath}`));
