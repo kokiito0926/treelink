@@ -17,6 +17,12 @@ $ tree . -L 2 | treelink --base "."
 $ tree . -L 2 | treelink --base "./src"
 ```
 
+```bash
+$ npx treee . -L 2 | treelink
+$ npx treee . -L 2 | treelink --base "."
+$ npx treee . -L 2 | treelink --base "./src"
+```
+
 ## ライセンス
 
 [MIT](LICENSE)
