@@ -2,7 +2,7 @@
 	"name": "@kokiito0926/treelink",
 	"version": "0.0.9",
 	"private": false,
-	"description": "ツリーリンク（treelink）を用いると、treeの実行結果をHTMLに変換することができます。",
+	"description": "treeの実行結果をHTMLに変換することができるコマンドラインのツールです。",
 	"keywords": [
 		"cli",
 		"bash",
