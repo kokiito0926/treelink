@@ -1,13 +1,5 @@
 #!/usr/bin/env node
 
-// >> $ tree . -L 2 | ./index.js
-// >> $ tree . -L 2 | ./index.js --base "."
-// >> $ tree . -L 2 | ./index.js --base "./src"
-
-// >> $ npx treee ./example/ | ./index.js
-// >> $ npx treee ./example/ | ./index.js --base "."
-// >> $ npx treee ./example/ | ./index.js --base "./src"
-
 import { stdin, argv } from "zx";
 
 const baseDir = argv.base;
