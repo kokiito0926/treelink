@@ -11,7 +11,6 @@ if (!process.stdin.isTTY) {
 }
 
 if (!inputData) {
-	console.error("Error: No input data provided.");
 	process.exit(1);
 }
 
