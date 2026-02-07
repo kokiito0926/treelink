@@ -1,6 +1,6 @@
 {
 	"name": "@kokiito0926/treelink",
-	"version": "0.0.10",
+	"version": "0.0.11",
 	"private": false,
 	"description": "treeの実行結果をHTMLに変換することができるコマンドラインのツールです。",
 	"keywords": [
