@@ -8,10 +8,9 @@
 // >> $ npx treee ./example/ | ./index.js --base "."
 // >> $ npx treee ./example/ | ./index.js --base "./src"
 
-import { stdin, minimist } from "zx";
+import { stdin, argv } from "zx";
 
-const args = minimist(process.argv.slice(2));
-const baseDir = args.base;
+const baseDir = argv.base;
 
 let inputData = "";
 
