@@ -4,12 +4,11 @@ import { stdin, argv } from "zx";
 
 const baseDir = argv.base;
 
-let inputData = "";
-
-if (!process.stdin.isTTY) {
-	inputData = await stdin();
+if (process.stdin.isTTY) {
+	process.exit(1);
 }
 
+const inputData = await stdin();
 if (!inputData) {
 	process.exit(1);
 }
