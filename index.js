@@ -8,7 +8,7 @@ if (process.stdin.isTTY) {
 	process.exit(1);
 }
 
-const inputData = await stdin();
+const inputData = (await stdin()).replace(/^\uFEFF/, "");
 if (!inputData) {
 	process.exit(1);
 }
@@ -27,16 +27,22 @@ for (const line of allLines) {
 	}
 
 	if (isTreeSection) {
-		const match = cleanLine.match(/^(.*[─-]{2}\s)(.*)$/);
-		if (match) {
-			const symbols = match[1];
-			const name = match[2].trim();
+		// Find the first character that is NOT a tree symbol (box-drawing, dash, pipe, space, etc.)
+		const nameIndex = cleanLine.search(/[^\s\u2500-\u257F\-\+\|\\\/]/);
+
+		if (nameIndex > 0) {
+			const symbols = cleanLine.slice(0, nameIndex);
+			const name = cleanLine.slice(nameIndex).trim();
+
+			// Depth calculation: each level is typically 4 characters.
+			const depth = Math.floor(symbols.length / 4);
 			parsedNodes.push({
-				depth: Math.floor(symbols.length / 4) + 1,
+				depth,
 				symbols,
 				name,
 			});
 		} else if (cleanLine.trim() !== "") {
+			// This is likely the root node
 			parsedNodes.push({
 				depth: 0,
 				symbols: "",
@@ -52,6 +58,7 @@ for (const line of allLines) {
 let pathStack = [];
 const treeHtml = parsedNodes
 	.map((node) => {
+		// Reset/Slice pathStack to current depth
 		pathStack = pathStack.slice(0, node.depth);
 
 		const nameForLink = node.name.replace(/\/$/, "");
